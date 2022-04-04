@@ -9,7 +9,7 @@ function employeeCard(employee) {
                 </h2>
                 <p class="text-center border">ID: ${employee.getId()}</p>
                 <p class="text-center border">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></p>
-                <p class="text-center border">GitHub: <a href="https://github.com/${employee.getGithub()}">${employee.getGithub()}</a></p>
+                <p class="text-center border">GitHub: <a href="https://github.com/${employee.getGithub()}" target="_blank">${employee.getGithub()}</a></p>
             </div>
         </div>
         `
