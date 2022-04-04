@@ -8,9 +8,9 @@ const Intern = require('./lib/Intern');
 const employees = [];
 
 // Create function to write HTML file
-const writeFile = (fileName, data) => {
+const writeFile = (data) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(fileName, data, err => {
+        fs.writeFile('./dist/index.html', data, err => {
             if(err) {
                 reject(err);
                 return;
@@ -142,8 +142,8 @@ const addEmployee = (data) => {
                 type: `input`,
                 name: `github`,
                 message: `What is the engineer's GitHub username?(Required)`,
-                validate: officeInput => {
-                    if(officeInput) {
+                validate: githubInput => {
+                    if(githubInput) {
                         return true;
                     } else {
                         console.log(`Please enter the engineer's GitHub username!`);
@@ -211,8 +211,8 @@ const addEmployee = (data) => {
                 type: `input`,
                 name: `school`,
                 message: `What is the intern's school name?(Required)`,
-                validate: officeInput => {
-                    if(officeInput) {
+                validate: schoolInput => {
+                    if(schoolInput) {
                         return true;
                     } else {
                         console.log(`Please enter the intern's school name!`);
@@ -236,7 +236,8 @@ const addEmployee = (data) => {
             addEmployee(extraEmployee);
         })
     } else {
-        return generatePage(employees);
+        const html = generatePage(employees);
+        return writeFile(html);
     }
 }
 
